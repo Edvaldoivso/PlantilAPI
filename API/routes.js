@@ -8,7 +8,7 @@ router.get('/Plantas',PlantaControllers.buscarTodas);
 //Get por ID
 router.get('/BuscaPlanta/:id', PlantaControllers.buscarUnitaria);
 //Post Inserir
-router.post('/InserirPlanta',);
+router.post('/InserirPlanta', PlantaControllers.inserirPlanta);
 //Alterar Planta
 router.put('/Alterar/:id',);
 //Deletar Planta

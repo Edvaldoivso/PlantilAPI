@@ -45,5 +45,15 @@ module.exports = {
         }
 
         res.json(json);
+    },
+
+
+    inserirPlanta: async (req, res) => {
+        let json = {
+            error: "",
+            result: {},
+        };
+
+        
     }
 }
