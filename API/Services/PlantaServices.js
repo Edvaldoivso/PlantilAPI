@@ -17,7 +17,7 @@ module.exports = {
     },
 
 
-//Busca Unitaria de uma planta
+    //Busca Unitaria de uma planta
     buscarUnitaria: (id) => {
         return new Promise((aceito, rejeito) => {
             db.query("SELECT * FROM detalhes_plantas WHERE id= ?"),
@@ -37,7 +37,39 @@ module.exports = {
     },
 
 
-    
 
+    inserirPlanta: (
+        id,
+        Nome,
+        Colheita,
+        Plantil,
+        PartesComestiveis,
+        DistanciaCovas,
+        ProfundidadeCovas,
+        Regas,
+        Luz,
+        PragasDoencas) => {
+        return new Promise((aceito, rejeito) => {
+            db.query(
+                "INSERT INTO detalhes_plantas (id,Nome,Colheita,Plantil,PartesComestiveis,DistanciaCovas,ProfundidadeCovas,Regas,Luz,PragasDoencas) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                [id,
+                    Nome,
+                    Colheita,
+                    Plantil,
+                    PartesComestiveis,
+                    DistanciaCovas,
+                    ProfundidadeCovas,
+                    Regas,
+                    Luz,
+                    PragasDoencas],
+                (error, result) => {
+                    if (error) {
+                        rejeito(error);
+                        aceito(result.inserirPlanta);
+                    }
+                }
+            );
+        });
+    },
 
 };

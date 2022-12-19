@@ -54,6 +54,55 @@ module.exports = {
             result: {},
         };
 
-        
+        let id = "";
+        let Nome = "";
+        let Colheita = "";
+        let Plantil = "";
+        let PartesComestiveis = "";
+        let DistanciaCovas = "";
+        let ProfundidadeCovas = "";
+        let Regas = "";
+        let Luz = "";
+        let PragasDoencas = "";
+
+
+        if (Nome) {
+            let PlantaSalva = await plantasaservices.insertPlanta(
+
+                id,
+                Nome,
+                Colheita,
+                Plantil,
+                PartesComestiveis,
+                DistanciaCovas,
+                ProfundidadeCovas,
+                Regas,
+                Luz,
+                PragasDoencas
+            );
+
+            json.result = {
+                id: PlantaSalva,
+                Nome,
+                Colheita,
+                Plantil,
+                PartesComestiveis,
+                DistanciaCovas,
+                ProfundidadeCovas,
+                Regas,
+                Luz,
+                PragasDoencas,
+            }
+
+        } else {
+            json.error = "Campos não enviados"
+         }
+
+
+
+
+
+
+
     }
 }
