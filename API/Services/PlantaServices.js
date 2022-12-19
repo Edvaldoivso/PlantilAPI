@@ -37,7 +37,7 @@ module.exports = {
     },
 
 
-
+    //Metodo de Alteração de dados de plantas
     inserirPlanta: (
         id,
         Nome,
@@ -71,5 +71,44 @@ module.exports = {
             );
         });
     },
+
+
+
+
+
+    //Altera os Dados Indicados
+    alteraPlanta: (id) => {
+        return new Promise((aceito, rejeito) => {
+            db.query(
+                "UPDATE detalhes_plantas SET Nome = ? WHERE id = ?",
+                [id, Nome],
+                (error, result) => {
+                    if (error) {
+                        rejeito(error);
+                        aceito(result);
+                    };
+                }
+            );
+        });
+    },
+
+    //Exclui dos Dados Indicados
+
+    deletaPlanta: (id) => {
+        return new Promise((aceito, rejeito) => {
+            db.query("DELETE FROM detalhes_plantas WHERE id= ?", [id],
+                (error, result) => {
+                    if (error, results) {
+                        rejeitado(error);
+                        return;
+                    }
+                    aceito(result);
+                });
+        });
+    }
+
+
+
+
 
 };

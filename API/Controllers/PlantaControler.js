@@ -68,7 +68,6 @@ module.exports = {
 
         if (Nome) {
             let PlantaSalva = await plantasaservices.insertPlanta(
-
                 id,
                 Nome,
                 Colheita,
@@ -96,13 +95,38 @@ module.exports = {
 
         } else {
             json.error = "Campos não enviados"
-         }
+        };
+    },
 
 
+    alteraPlanta: async (req, res) => {
+        let json = {
+            error: "",
+            result: {},
+        };
 
+        let id = req.params.id;
+        let Nome = req.params.Nome;
 
+        if (id) {
+            await plantasaservices.alteraPlanta(id, Nome);
+            json.result = {
+                id,
+                Nome
+            };
+        } else {
+            json.error = "Alteração não Concluida"
+        }
+        res.json(json);
+    },
 
+    deletaPlanta: async (req, res) => {
+        let json = { error: "", result: ["Excluido o registro"] };
 
-
+        await plantasaservices.deletaPlanta(
+            req.params.id
+        );
+        res.json(json);
     }
+
 }
